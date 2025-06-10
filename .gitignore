@@ -1,0 +1,4 @@
+*.toolbox/
+.tlacache/
+texput.log
+*.pdf
