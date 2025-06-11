@@ -3,6 +3,8 @@ CONSTANT RMs
 
 VARIABLES tmState, tmPrepared
 
+vars == <<tmState, tmPrepared>>
+
 Init ==
     /\ tmState = "init"
     /\ tmPrepared = {}
@@ -18,12 +20,20 @@ Commit(rm) ==
     /\ tmState' = "commit"
     /\ UNCHANGED(tmPrepared)  
 
-Abort(rm)
+Abort(rm) ==
     /\ tmState \in {"init", "abort"}
     /\ tmState' = "abort"
     /\ UNCHANGED(tmPrepared)
 
+\* For carini
+Next ==
+    \E r \in RMs:
+        \/ Prepare(r)
+        \/ Commit(r)
+        \/ Abort(r)
+        
+Spec == Init /\ [][Next]_vars
 =============================================================================
 \* Modification History
-\* Last modified Mon Jun 09 18:48:21 EDT 2025 by johnnguyen
+\* Last modified Tue Jun 10 16:12:23 EDT 2025 by johnnguyen
 \* Created Mon Jun 09 14:02:06 EDT 2025 by johnnguyen

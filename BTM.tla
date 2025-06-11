@@ -32,8 +32,6 @@ Next == \E rm \in RMs:
             \/ SyncCommit(rm)
             \/ SyncAbort(rm)
             
-Consistent == \A r1, r2 \in RMs: ~(rmState[r1] = "abort" /\ rmState[r2] = "commit")
-
 ToyR ==
     /\ (\E r \in RMs: onceCommit[r]) => (\A r \in RMs: oncePrepare[r])
     /\ (\E r \in RMs: onceAbort[r])  => (\A r \in RMs: ~onceCommit[r])
@@ -41,21 +39,15 @@ ToyR ==
 Itm == 
     /\ TypeOK
     
-    /\ RMs # tmPrepared => (\A r \in RMs: ~onceCommit[r])
-    /\ \A r \in RMs: oncePrepare[r] => RMs = tmPrepared
+    /\ \A r \in RMs: r \in tmPrepared => oncePrepare[r]
+    /\ tmState = "commit" => RMs = tmPrepared
     
-    /\ tmState = "commit" => \A r \in RMs: ~onceAbort[r]
-    /\ \E r \in RMs: onceCommit[r] => tmState = "commit"
-
-THEOREM ItmInitialization ==
-    Init => Itm
+    /\ (\E r \in RMs: onceCommit[r]) => tmState = "commit"
     
-THEOREM ItmInduction ==
-    Itm /\ Next => Itm'  
+    /\ tmState = "abort" => (\A r \in RMs: ~onceCommit[r])
+    /\ (\E r \in RMs: onceAbort[r]) => tmState = "abort"   
 
-THEOREM ItmSafety ==
-    Itm => ToyR
 =============================================================================
 \* Modification History
-\* Last modified Mon Jun 09 18:44:44 EDT 2025 by johnnguyen
+\* Last modified Tue Jun 10 15:46:08 EDT 2025 by johnnguyen
 \* Created Mon Jun 09 14:04:54 EDT 2025 by johnnguyen

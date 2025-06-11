@@ -3,31 +3,38 @@ CONSTANT RMs
 
 VARIABLES rmState
 
+vars == <<rmState>>
+
 Init == 
     rmState = [rm \in RMs |-> "working"]
 
-\* made X'[rm] = y more explicit since no TypeOK
 Prepare(rm) ==
     /\ rmState[rm] = "working"
     /\ rmState' = [rmState EXCEPT ![rm] = "prepared"]
-    \*/\ rmState'[rm] = "prepared"
 
 Commit(rm) ==
     /\ rmState' = [rmState EXCEPT ![rm] = "commit"]
-    \*/\ rmState'[rm] = "commit"
     
 Abort(rm) ==
     /\ rmState' = [rmState EXCEPT ![rm] = "abort"]
-    \* /\ rmState'[rm] = "abort"
     
 SilentAbort(rm) ==
     /\ rmState[rm] = "working"
     /\ rmState' = [rmState EXCEPT ![rm] = "abort"]
-    \*/\ rmState'[rm] = "abort"
 
+\* For the purposes of using carini
+Next ==
+    \E r \in RMs:
+        \/ Prepare(r)
+        \/ Commit(r)
+        \/ Abort(r)
+        \/ SilentAbort(r)
 
+Consistent == \A rm1,rm2 \in RMs : ~(rmState[rm1] = "abort" /\ rmState[rm2] = "commit")
+
+Spec == Init /\ [][Next]_vars
 
 =============================================================================
 \* Modification History
-\* Last modified Sun Jun 08 17:46:40 EDT 2025 by johnnguyen
+\* Last modified Tue Jun 10 16:09:12 EDT 2025 by johnnguyen
 \* Created Fri Jun 06 14:20:45 EDT 2025 by johnnguyen
