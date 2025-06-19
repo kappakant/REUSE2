@@ -3,50 +3,36 @@
 
 CONSTANTS RMs
 
-VARIABLES Fluent15_0, Fluent6_0, Fluent14_0, Fluent17_0, Fluent18_0, Fluent7_0, rmState
+VARIABLES rmState
 
-vars == <<Fluent15_0, Fluent6_0, Fluent14_0, Fluent17_0, Fluent18_0, Fluent7_0, rmState>>
+vars == <<rmState>>
 
 CandSep ==
-/\ \A var0 \in RMs : (Fluent14_0[var0]) => (~(Fluent15_0[var0]))
-/\ \A var0 \in RMs : (Fluent6_0[var0]) => (Fluent7_0[var0])
-/\ \A var0 \in RMs : (Fluent17_0[var0]) => (~(Fluent18_0[var0]))
+/\ /\ UNSAT
 
 Init ==
 /\ rmState = [rm \in RMs |-> "working"]
-/\ Fluent15_0 = [ x0 \in RMs |-> FALSE]
-/\ Fluent6_0 = [ x0 \in RMs |-> FALSE]
-/\ Fluent14_0 = [ x0 \in RMs |-> FALSE]
-/\ Fluent17_0 = [ x0 \in RMs |-> FALSE]
-/\ Fluent18_0 = [ x0 \in RMs |-> FALSE]
-/\ Fluent7_0 = [ x0 \in RMs |-> FALSE]
 
 Prepare(rm) ==
 /\ rmState[rm] = "working"
 /\ rmState' = [rmState EXCEPT![rm] = "prepared"]
-/\ Fluent7_0' = [Fluent7_0 EXCEPT ![rm] = TRUE]
-/\ UNCHANGED<<Fluent15_0, Fluent6_0, Fluent14_0, Fluent17_0, Fluent18_0>>
+/\ UNCHANGED<<>>
 /\ CandSep'
 
 Commit(rm) ==
 /\ rmState' = [rmState EXCEPT![rm] = "commit"]
-/\ Fluent15_0' = [[x0 \in RMs |-> TRUE] EXCEPT ![rm] = FALSE]
-/\ Fluent6_0' = [[x0 \in RMs |-> TRUE] EXCEPT ![rm] = FALSE]
-/\ Fluent17_0' = [Fluent17_0 EXCEPT ![rm] = TRUE]
-/\ UNCHANGED<<Fluent14_0, Fluent18_0, Fluent7_0>>
+/\ UNCHANGED<<>>
 /\ CandSep'
 
 Abort(rm) ==
 /\ rmState' = [rmState EXCEPT![rm] = "abort"]
-/\ Fluent14_0' = [Fluent14_0 EXCEPT ![rm] = TRUE]
-/\ Fluent18_0' = [Fluent18_0 EXCEPT ![rm] = TRUE]
-/\ UNCHANGED<<Fluent15_0, Fluent6_0, Fluent17_0, Fluent7_0>>
+/\ UNCHANGED<<>>
 /\ CandSep'
 
 SilentAbort(rm) ==
 /\ rmState[rm] = "working"
 /\ rmState' = [rmState EXCEPT![rm] = "abort"]
-/\ UNCHANGED<<Fluent15_0, Fluent6_0, Fluent14_0, Fluent17_0, Fluent18_0, Fluent7_0>>
+/\ UNCHANGED<<>>
 /\ CandSep'
 
 Next ==

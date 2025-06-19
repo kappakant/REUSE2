@@ -1,15 +1,15 @@
 TLC2 Version 2.20 of Day Month 20?? (rev: db191cc)
 Warning: Please run the Java VM, which executes TLC with a throughput optimized garbage collector, by passing the "-XX:+UseParallelGC" property.
 (Use the -nowarning option to disable this warning.)
-Running breadth-first search Model-Checking with fp 42 and seed 4284043829933675689 with 8 workers on 8 cores with 4096MB heap and 64MB offheap memory [pid: 30057] (Mac OS X 15.5 aarch64, Oracle Corporation 22.0.2 x86_64, MSBDiskFPSet, DiskStateQueue).
-Parsing file /Users/johnnguyen/Desktop/TLA/ToyRM_hist.tla
-Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-13761408561715494051/_TLCTrace.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/_TLCTrace.tla)
-Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-13761408561715494051/TLC.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/TLC.tla)
-Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-13761408561715494051/TLCExt.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/TLCExt.tla)
-Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-13761408561715494051/Sequences.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/Sequences.tla)
-Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-13761408561715494051/Naturals.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
-Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-13761408561715494051/FiniteSets.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/FiniteSets.tla)
-Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-13761408561715494051/Integers.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/Integers.tla)
+Running breadth-first search Model-Checking with fp 27 and seed -8929864030023727952 with 8 workers on 8 cores with 4096MB heap and 64MB offheap memory [pid: 50361] (Mac OS X 15.5 aarch64, Oracle Corporation 22.0.2 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /Users/johnnguyen/Desktop/TLA/ToyTwoCommit/ToyRM_hist.tla
+Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-8302956169196185571/_TLCTrace.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/_TLCTrace.tla)
+Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-8302956169196185571/TLC.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/TLC.tla)
+Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-8302956169196185571/TLCExt.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/TLCExt.tla)
+Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-8302956169196185571/Sequences.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/Sequences.tla)
+Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-8302956169196185571/Naturals.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
+Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-8302956169196185571/FiniteSets.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/FiniteSets.tla)
+Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-8302956169196185571/Integers.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/Integers.tla)
 Semantic processing of module Naturals
 Semantic processing of module Sequences
 Semantic processing of module FiniteSets
@@ -18,14 +18,24 @@ Semantic processing of module Integers
 Semantic processing of module TLCExt
 Semantic processing of module _TLCTrace
 Semantic processing of module ToyRM_hist
-Starting... (2025-06-11 13:44:39)
+Starting... (2025-06-19 03:34:02)
 Computing initial states...
-Finished computing initial states: 1 distinct state generated at 2025-06-11 13:44:40.
-Model checking completed. No error has been found.
-  Estimates of the probability that TLC did not check all reachable states
-  because two distinct states had the same fingerprint:
-  calculated (optimistic):  val = 3.3E-15
-574 states generated, 140 distinct states found, 0 states left on queue.
-The depth of the complete state graph search is 7.
-The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 9 and the 95th percentile is 4).
-Finished in 00s at (2025-06-11 13:44:40)
+Finished computing initial states: 1 distinct state generated at 2025-06-19 03:34:02.
+Error: Invariant Consistent is violated.
+Error: The behavior up to this point is:
+State 1: <Initial predicate>
+rmState = (res1 :> "working" @@ res2 :> "working" @@ res3 :> "working")
+
+State 2: <Prepare(res1) line 17, col 1 to line 20, col 11 of module ToyRM_hist>
+rmState = (res1 :> "prepared" @@ res2 :> "working" @@ res3 :> "working")
+
+State 3: <Abort(res1) line 28, col 1 to line 30, col 11 of module ToyRM_hist>
+rmState = (res1 :> "abort" @@ res2 :> "working" @@ res3 :> "working")
+
+State 4: <Commit(res2) line 23, col 1 to line 25, col 11 of module ToyRM_hist>
+rmState = (res1 :> "abort" @@ res2 :> "commit" @@ res3 :> "working")
+
+100 states generated, 46 distinct states found, 25 states left on queue.
+The depth of the complete state graph search is 5.
+Finished in 00s at (2025-06-19 03:34:02)
+Trace exploration spec path: ./ToyRM_hist_TTrace_1750318441.tla
