@@ -1,0 +1,48 @@
+{
+    "preds"  :  [
+        "[type |-> \"Prepared\", rm |-> rmi] \\in msgs",
+        "[type |-> \"Prepared\", rm |-> rmj] \\in msgs",
+        "[type |-> \"Commit\"] \\in msgs",
+        "[type |-> \"Abort\"] \\in msgs",
+        "rmState[rmi] = \"working\"",
+        "rmState[rmi] = \"prepared\"",
+        "rmState[rmi] = \"aborted\"",
+        "rmState[rmi] = \"committed\"",
+        "rmState[rmj] = \"working\"",
+        "rmState[rmj] = \"prepared\"",
+        "rmState[rmj] = \"aborted\"",
+        "rmState[rmj] = \"committed\"",
+        "Fluent6_0[rmi]",
+        "Fluent5_0[rmi]",
+        "Fluent19_0[rmi]",
+        "Fluent9_0[rmi]",
+        "Fluent8_0[rmi]",
+        "Fluent20_0[rmi]",
+        "Fluent13_0[rmi]",
+        "Fluent12_0[rmi]",
+        "Fluent6_0[rmj]",
+        "Fluent5_0[rmj]",
+        "Fluent19_0[rmj]",
+        "Fluent9_0[rmj]",
+        "Fluent8_0[rmj]",
+        "Fluent20_0[rmj]",
+        "Fluent13_0[rmj]",
+        "Fluent12_0[rmj]"
+    ],
+    "preds_alt" : [],
+    "safety"  :  "Consistent",
+    "constants"  :  [
+        "CONSTANTS",
+        "RMs={rm1,rm2}",
+        "rm1 = rm1",
+        "rm2 = rm2"
+
+    ],
+    "constraint"  :  "",
+    "quant_inv"  :  "\\A rmi \\in RMs : \\A rmj \\in RMs : ",
+    "quant_inv_alt"  :  null,
+    "model_consts"  :  "CONSTANT rm1,rm2",
+    "symmetry" : true,
+    "typeok"  :  "TypeOK",
+    "simulate"  :  true      
+}

@@ -1,0 +1,36 @@
+
+{
+    "preds"  :  [
+        "tmPrepared = RMs",
+        "rmState[rm] = \"working\"",
+        "rmState[rm] = \"prepared\"",
+        "rmState[rm] = \"aborted\"",
+        "rmState[rm] = \"committed\"",
+        "tmPrepared = tmPrepared \\cup {rm}",
+        "Fluent6_0[rm]",
+        "Fluent5_0[rm]",
+        "Fluent4_0[rm]",
+        "Fluent17_0[rm]",
+        "Fluent3_0[rm]",
+        "Fluent18_0[rm]"
+    ],
+
+    "preds_alt" : [],
+        "safety"  :  "Consistent",
+        "constants"  :  [
+            "CONSTANTS",
+            "RMs={res1,res2}",
+            "res1 = res1",
+            "res2 = res2"
+                                                            
+            ],
+        "constraint"  :  "",
+        "quant_inv"  :  "\\A rm \\in RMs : ",
+        "quant_inv_alt"  :  null,
+        "model_consts"  :  "CONSTANT res1,res2",
+        "symmetry" : true,
+        "typeok"  :  "TypeOKRand",
+        "simulate"  :  true      
+                                        
+}
+
