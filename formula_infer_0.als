@@ -1,4 +1,4 @@
-//17
+//19
 //0
 open util/boolean
 open util/ordering[Idx] as IdxOrder
@@ -336,12 +336,15 @@ one sig RMs extends Sort {} {
 	numericSort = False
 }
 
-one sig SndCommit extends BaseName {} {
+one sig SndAbort extends BaseName {} {
 	paramIdxs = P0
 	paramTypes = P0->RMs
 }
-one sig SndCommitres1 extends Act {} {
+one sig SndAbortres1 extends Act {} {
 	params = (P0->res1)
+}
+one sig SndAbortres3 extends Act {} {
+	params = (P0->res3)
 }
 
 one sig RcvPrepare extends BaseName {} {
@@ -358,46 +361,24 @@ one sig RcvPrepareres3 extends Act {} {
 	params = (P0->res3)
 }
 
-one sig SndPrepare extends BaseName {} {
+one sig SndCommit extends BaseName {} {
 	paramIdxs = P0
 	paramTypes = P0->RMs
 }
-one sig SndPrepareres2 extends Act {} {
+one sig SndCommitres2 extends Act {} {
 	params = (P0->res2)
 }
-one sig SndPrepareres1 extends Act {} {
-	params = (P0->res1)
-}
-one sig SndPrepareres3 extends Act {} {
-	params = (P0->res3)
-}
-
-one sig RcvAbort extends BaseName {} {
-	paramIdxs = P0
-	paramTypes = P0->RMs
-}
-one sig RcvAbortres2 extends Act {} {
-	params = (P0->res2)
-}
-one sig RcvAbortres1 extends Act {} {
-	params = (P0->res1)
-}
-
-one sig RcvCommit extends BaseName {} {
-	paramIdxs = P0
-	paramTypes = P0->RMs
-}
-one sig RcvCommitres1 extends Act {} {
+one sig SndCommitres1 extends Act {} {
 	params = (P0->res1)
 }
 
 
-one sig T0, T1, T2, T3, T4, T5, T6, T7, T8 extends Idx {}
+one sig T0, T1, T2, T3, T4 extends Idx {}
 
 fact {
 	IdxOrder/first = T0
-	IdxOrder/next = T0->T1 + T1->T2 + T2->T3 + T3->T4 + T4->T5 + T5->T6 + T6->T7 + T7->T8
-	RcvAbort in FlSymAction.baseName // the final base name in the neg trace must appear in the sep formula
+	IdxOrder/next = T0->T1 + T1->T2 + T2->T3 + T3->T4
+	SndCommit in FlSymAction.baseName // the final base name in the neg trace must appear in the sep formula
 }
 
 
@@ -451,13 +432,11 @@ one sig var1tores3var0tores3 extends Env {} {}
 
 
 fact PartialInstance {
-	lastIdx = (EmptyTrace->T0) + (PT3->T2) + (PT4->T0) + (PT2->T0) + (PT1->T8) + (NT1->T8)
+	lastIdx = (EmptyTrace->T0) + (PT2->T3) + (PT1->T4) + (NT1->T4)
 
-	path = (PT3 -> (T0->SndPrepareres1 + T1->RcvPrepareres1 + T2->RcvAbortres1)) +
-		(PT4 -> (T0->SndCommitres1)) +
-		(PT2 -> (T0->RcvAbortres1)) +
-		(PT1 -> (T0->SndPrepareres1 + T1->RcvPrepareres1 + T2->SndPrepareres2 + T3->SndPrepareres3 + T4->RcvPrepareres3 + T5->RcvPrepareres2 + T6->SndCommitres1 + T7->RcvCommitres1 + T8->SndPrepareres3)) +
-		(NT1 -> (T0->SndPrepareres1 + T1->RcvPrepareres1 + T2->SndPrepareres2 + T3->SndPrepareres3 + T4->RcvPrepareres3 + T5->RcvPrepareres2 + T6->SndCommitres1 + T7->RcvCommitres1 + T8->RcvAbortres2))
+	path = (PT2 -> (T0->RcvPrepareres2 + T1->RcvPrepareres3 + T2->RcvPrepareres1 + T3->SndCommitres1)) +
+		(PT1 -> (T0->RcvPrepareres1 + T1->RcvPrepareres3 + T2->RcvPrepareres2 + T3->SndAbortres1 + T4->SndAbortres3)) +
+		(NT1 -> (T0->RcvPrepareres1 + T1->RcvPrepareres3 + T2->RcvPrepareres2 + T3->SndAbortres1 + T4->SndCommitres2))
 
 	maps = var0tores1->(var0->res1) +
 		var1tores1var0tores1->(var1->res1 + var0->res1) +
@@ -500,15 +479,12 @@ fact PartialInstance {
 		var1tores3var0tores3->(var1->res3 + var0->res3)
 
 	baseName = RcvPrepareres1->RcvPrepare +
-		SndPrepareres2->SndPrepare +
-		SndPrepareres3->SndPrepare +
 		RcvPrepareres3->RcvPrepare +
-		RcvAbortres2->RcvAbort +
+		SndCommitres2->SndCommit +
 		RcvPrepareres2->RcvPrepare +
-		RcvAbortres1->RcvAbort +
 		SndCommitres1->SndCommit +
-		RcvCommitres1->RcvCommit +
-		SndPrepareres1->SndPrepare
+		SndAbortres1->SndAbort +
+		SndAbortres3->SndAbort
 }
 
 
@@ -520,7 +496,5 @@ fact {
 
 one sig NT1 extends NegTrace {} {}
 
-one sig PT3 extends PosTrace {} {}
-one sig PT4 extends PosTrace {} {}
 one sig PT2 extends PosTrace {} {}
 one sig PT1 extends PosTrace {} {}
