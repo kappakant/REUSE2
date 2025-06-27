@@ -1,15 +1,15 @@
 TLC2 Version 2.20 of Day Month 20?? (rev: db191cc)
 Warning: Please run the Java VM, which executes TLC with a throughput optimized garbage collector, by passing the "-XX:+UseParallelGC" property.
 (Use the -nowarning option to disable this warning.)
-Running breadth-first search Model-Checking with fp 94 and seed 7753360117606166442 with 8 workers on 8 cores with 4096MB heap and 64MB offheap memory [pid: 6575] (Mac OS X 15.5 aarch64, Oracle Corporation 22.0.2 x86_64, MSBDiskFPSet, DiskStateQueue).
-Parsing file /Users/johnnguyen/Desktop/TLA/rmState_msgs_hist.tla
-Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-11714399848485060841/_TLCTrace.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/_TLCTrace.tla)
-Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-11714399848485060841/TLC.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/TLC.tla)
-Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-11714399848485060841/TLCExt.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/TLCExt.tla)
-Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-11714399848485060841/Sequences.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/Sequences.tla)
-Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-11714399848485060841/Naturals.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
-Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-11714399848485060841/FiniteSets.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/FiniteSets.tla)
-Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-11714399848485060841/Integers.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/Integers.tla)
+Running breadth-first search Model-Checking with fp 53 and seed 2882922311167806061 with 8 workers on 8 cores with 4096MB heap and 64MB offheap memory [pid: 57159] (Mac OS X 15.5 aarch64, Oracle Corporation 22.0.2 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /Users/johnnguyen/Desktop/TLA/rmState_msgs_tmPrepared_hist.tla
+Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-15619832086495926701/_TLCTrace.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/_TLCTrace.tla)
+Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-15619832086495926701/TLC.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/TLC.tla)
+Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-15619832086495926701/TLCExt.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/TLCExt.tla)
+Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-15619832086495926701/Sequences.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/Sequences.tla)
+Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-15619832086495926701/Naturals.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
+Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-15619832086495926701/FiniteSets.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/FiniteSets.tla)
+Parsing file /private/var/folders/td/ccnr1wd11sz8476v426_q7tc0000gp/T/tlc-15619832086495926701/Integers.tla (jar:file:/Users/johnnguyen/bin/tla2tools.jar!/tla2sany/StandardModules/Integers.tla)
 Semantic processing of module Naturals
 Semantic processing of module Sequences
 Semantic processing of module FiniteSets
@@ -17,15 +17,15 @@ Semantic processing of module TLC
 Semantic processing of module Integers
 Semantic processing of module TLCExt
 Semantic processing of module _TLCTrace
-Semantic processing of module rmState_msgs_hist
-Starting... (2025-06-23 13:19:53)
+Semantic processing of module rmState_msgs_tmPrepared_hist
+Starting... (2025-06-26 14:30:49)
 Computing initial states...
-Finished computing initial states: 1 distinct state generated at 2025-06-23 13:19:53.
+Finished computing initial states: 1 distinct state generated at 2025-06-26 14:30:49.
 Model checking completed. No error has been found.
   Estimates of the probability that TLC did not check all reachable states
   because two distinct states had the same fingerprint:
-  calculated (optimistic):  val = 2.4E-12
-19036 states generated, 2712 distinct states found, 0 states left on queue.
+  calculated (optimistic):  val = 1.1E-12
+14500 states generated, 1632 distinct states found, 0 states left on queue.
 The depth of the complete state graph search is 13.
 The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 9 and the 95th percentile is 4).
-Finished in 00s at (2025-06-23 13:19:53)
+Finished in 00s at (2025-06-26 14:30:49)

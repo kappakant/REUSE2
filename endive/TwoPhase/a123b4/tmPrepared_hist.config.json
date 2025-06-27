@@ -1,0 +1,27 @@
+{
+    "preds"  :  [
+        "tmPrepared = RMs",
+        "tmPrepared = tmPrepared \\cup {rmi}",
+        "tmPrepared = tmPrepared \\cup {rmj}",
+        "Fluent6_0[rmi]",
+        "Fluent7_0[rmi]",
+        "Fluent6_0[rmj]",
+        "Fluent7_0[rmj]"
+    ],
+    "preds_alt" : [],
+    "safety"  :  "CandSep",
+    "constants"  :  [
+        "CONSTANTS",
+        "RMs={rm1,rm2}",
+        "rm1 = rm1",
+        "rm2 = rm2"
+
+    ],
+    "constraint"  :  "",
+    "quant_inv"  :  "\\A rmi \\in RMs : \\A rmj \\in RMs : ",
+    "quant_inv_alt"  :  null,
+    "model_consts"  :  "CONSTANT rm1,rm2",
+    "symmetry" : false,
+    "typeok"  :  "TypeOKRand",
+    "simulate"  :  true      
+}

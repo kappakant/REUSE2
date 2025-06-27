@@ -1,0 +1,27 @@
+{
+    "preds"  :  [
+        "tmState = \"init\"",
+        "tmState = \"committed\"",
+        "tmState = \"aborted\"",
+        "Fluent13_0[rmi]",
+        "Fluent14_0[rmi]",
+        "Fluent13_0[rmj]",
+        "Fluent14_0[rmj]"
+    ],
+    "preds_alt" : [],
+    "safety"  :  "CandSep",
+    "constants"  :  [
+        "CONSTANTS",
+        "RMs={rm1,rm2}",
+        "rm1 = rm1",
+        "rm2 = rm2"
+
+    ],
+    "constraint"  :  "",
+    "quant_inv"  :  "\\A rmi \\in RMs : \\A rmj \\in RMs : ",
+    "quant_inv_alt"  :  null,
+    "model_consts"  :  "CONSTANT rm1,rm2",
+    "symmetry" : false,
+    "typeok"  :  "TypeOKRand",
+    "simulate"  :  true      
+}

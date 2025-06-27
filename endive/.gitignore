@@ -39,3 +39,4 @@ states/
 __pycache__/
 benchmarks.log
 *.proofs.html
+tla2tools-checkall.jar

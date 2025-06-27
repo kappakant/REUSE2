@@ -1,0 +1,47 @@
+{
+    "preds"  :  [
+        "rmState[rmi] = \"working\"",
+        "rmState[rmi] = \"prepared\"",
+        "rmState[rmi] = \"aborted\"",
+        "rmState[rmi] = \"committed\"",
+        "rmState[rmj] = \"working\"",
+        "rmState[rmj] = \"prepared\"",
+        "rmState[rmj] = \"aborted\"",
+        "rmState[rmj] = \"committed\"",
+        "rmState[rmk] = \"working\"",
+        "rmState[rmk] = \"prepared\"",
+        "rmState[rmk] = \"aborted\"",
+        "rmState[rmk] = \"committed\"",
+        "[type |-> \"Prepared\", rm |-> rmi] \\in msgs",
+        "[type |-> \"Prepared\", rm |-> rmj] \\in msgs",
+        "[type |-> \"Prepared\", rm |-> rmk] \\in msgs",
+        "[type |-> \"Commit\"] \\in msgs",
+        "[type |-> \"Abort\"] \\in msgs",
+        "tmPrepared = RMs",
+        "tmPrepared = tmPrepared \\cup {rmi}",
+        "tmPrepared = tmPrepared \\cup {rmj}",
+        "tmPrepared = tmPrepared \\cup {rmk}",
+        "Fluent13_0[rmi]",
+        "Fluent14_0[rmi]",
+        "Fluent13_0[rmj]",
+        "Fluent14_0[rmj]",
+        "Fluent13_0[rmk]",
+        "Fluent14_0[rmk]"
+    ],
+    "preds_alt" : [],
+    "safety"  :  "Consistent",
+    "constants"  :  [
+        "CONSTANTS",
+        "RMs={rm1,rm2}",
+        "rm1 = rm1",
+        "rm2 = rm2"
+
+    ],
+    "constraint"  :  "",
+    "quant_inv"  :  "\\A rmi \\in RMs : \\E rmj \\in RMs : \\A rmk \\in RMs : ",
+    "quant_inv_alt"  :  null,
+    "model_consts"  :  "CONSTANT rm1,rm2",
+    "symmetry" : false,
+    "typeok"  :  "TypeOKRand",
+    "simulate"  :  true      
+}

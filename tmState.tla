@@ -1,4 +1,4 @@
------------------------------ MODULE TPtmState -----------------------------
+----------------------------- MODULE tmState -----------------------------
 CONSTANT RMs
 
 VARIABLES tmState
@@ -11,7 +11,8 @@ Init ==
 \* No SndPrepare
 
 RcvPrepare(rm) ==
-    tmState = "init"
+    /\ tmState = "init"
+    /\ UNCHANGED(tmState)
     
 SndCommit(rm) ==
     /\ tmState \in {"init", "committed"}

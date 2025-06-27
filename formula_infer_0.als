@@ -1,4 +1,4 @@
-//19
+//13
 //0
 open util/boolean
 open util/ordering[Idx] as IdxOrder
@@ -432,11 +432,12 @@ one sig var1tores3var0tores3 extends Env {} {}
 
 
 fact PartialInstance {
-	lastIdx = (EmptyTrace->T0) + (PT2->T3) + (PT1->T4) + (NT1->T4)
+	lastIdx = (EmptyTrace->T0) + (PT2->T0) + (PT3->T1) + (PT1->T4) + (NT1->T4)
 
-	path = (PT2 -> (T0->RcvPrepareres2 + T1->RcvPrepareres3 + T2->RcvPrepareres1 + T3->SndCommitres1)) +
-		(PT1 -> (T0->RcvPrepareres1 + T1->RcvPrepareres3 + T2->RcvPrepareres2 + T3->SndAbortres1 + T4->SndAbortres3)) +
-		(NT1 -> (T0->RcvPrepareres1 + T1->RcvPrepareres3 + T2->RcvPrepareres2 + T3->SndAbortres1 + T4->SndCommitres2))
+	path = (PT2 -> (T0->SndCommitres1)) +
+		(PT3 -> (T0->RcvPrepareres1 + T1->SndCommitres1)) +
+		(PT1 -> (T0->RcvPrepareres1 + T1->RcvPrepareres2 + T2->RcvPrepareres3 + T3->SndAbortres1 + T4->SndAbortres3)) +
+		(NT1 -> (T0->RcvPrepareres1 + T1->RcvPrepareres2 + T2->RcvPrepareres3 + T3->SndAbortres1 + T4->SndCommitres2))
 
 	maps = var0tores1->(var0->res1) +
 		var1tores1var0tores1->(var1->res1 + var0->res1) +
@@ -497,4 +498,5 @@ fact {
 one sig NT1 extends NegTrace {} {}
 
 one sig PT2 extends PosTrace {} {}
+one sig PT3 extends PosTrace {} {}
 one sig PT1 extends PosTrace {} {}
